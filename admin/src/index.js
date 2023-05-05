@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
 import HomePage from './pages/HomePage/HomePage';
 import LoginPage from './pages/LoginPage/LoginPage';
+import SignupPage from './pages/SignupPage/SignupPage';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
@@ -15,7 +16,8 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/" element={<HomePage />} />
+        <Route path="/signup" element={<SignupPage />} />
+        <Route path="/app/home" element={<HomePage />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
