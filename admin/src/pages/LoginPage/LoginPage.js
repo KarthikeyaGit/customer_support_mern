@@ -27,7 +27,7 @@ function LoginPage() {
             .then((data) => {
                 setTimeout(() => {
                     navigate('/app/home')
-                    
+
                 })
             })
             .catch((error) => {
@@ -59,7 +59,7 @@ function LoginPage() {
                             <div className="form-group mb-4">
                                 <label className="mb-1">Email</label>
                                 <input
-                                    type="text"
+                                    type="email"
                                     className="form-control"
                                     placeholder="Enter email"
                                     id="email"
@@ -93,6 +93,10 @@ function LoginPage() {
                             </button>
                         </form>
                     </div>
+                </div>
+                <div className="d-flex flex-row align-items-center justify-content-center mt-3">
+                    <span>Do you have an account?</span>
+                    <button className="btn btn-link text-blue text-decoration-underline" onClick={() => navigate('/signup')}>Sign Up</button>
                 </div>
             </div>
             <ToastContainer></ToastContainer>

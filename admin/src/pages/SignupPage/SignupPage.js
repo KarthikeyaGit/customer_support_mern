@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate  } from "react-router-dom";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function SignupPage() {
   const navigate = useNavigate();
@@ -18,6 +19,11 @@ function SignupPage() {
     event.preventDefault();
     const formData = new FormData(event.target);
     console.log("formData", formData);
+    if (formData.get('password') !== formData.get('confirmPassword')) {
+      toast.error('Passwords do not match');
+      return;
+    }
+    console.log("formData", formData.password);
     fetch('http://localhost:5000/api/signup', {
       method: 'POST',
       headers: {
@@ -38,8 +44,19 @@ function SignupPage() {
             confirmPassword: '',
           })
         } else if (data.token) {
-          console.log("signup successful");
-          navigate('/login');
+          toast.success('Account created successfully', {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          })
+          setTimeout(() => { 
+            navigate('/login');
+          }, 3000)
 
         }
        })
@@ -57,7 +74,8 @@ function SignupPage() {
   };
 
   return (
-    <div className="d-flex flex-column justify-content-center align-items-center vh-100 bg-light">
+    <div>
+          <div className="d-flex flex-column justify-content-center align-items-center vh-100 bg-light">
       <h2 className="card-title text-center mb-4">Sign Up</h2>
       <div className="card" style={{ width: '100%', maxWidth: '500px' }}>
         <div className="card-body m-4">
@@ -120,7 +138,14 @@ function SignupPage() {
           </form>
         </div>
       </div>
+      <div className="d-flex flex-row align-items-center justify-content-center mt-3">
+                    <span>Have an account?</span>
+                    <button className="btn btn-link text-blue text-decoration-underline" onClick={() => navigate('/login')}>Login</button>
+                </div>
+    </div>       
+      <ToastContainer></ToastContainer>
     </div>
+
   );
 }
 
