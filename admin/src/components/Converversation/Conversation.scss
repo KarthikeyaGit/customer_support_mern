@@ -10,6 +10,8 @@
       flex-direction: column;
       // flex-grow: 1;
       width: 400px;
+      border-left: none;
+
   
       .conv-heading {
         font-size: 20px;
@@ -175,7 +177,7 @@
     height: calc(100vh - 160px);
 
     li {
-      margin-top: 10px;
+      padding-top: 10px;
     }
     
   }

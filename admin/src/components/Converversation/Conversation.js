@@ -9,13 +9,13 @@ function Conversation() {
 
 
   const [messageInput, setMessageInput] = useState('');
-  const [ConvList , setConvList] = useState([{'from':'agent', 'to': 'user', 'message':'Hello'},{'from':'user', 'to': 'agent', 'message':'Hi'},{'from':'agent', 'to': 'user', 'message':'How are you?'}])
+  const [ConvList, setConvList] = useState([{ 'from': 'agent', 'to': 'user', 'message': 'Hello' }, { 'from': 'user', 'to': 'agent', 'message': 'Hi' }, { 'from': 'agent', 'to': 'user', 'message': 'How are you?' }])
 
   const handleInputChange = (e) => {
     setMessageInput(e.target.value);
   };
 
-  
+
   const handleSend = () => {
     if (messageInput.length > 0) {
       setMessageInput('');
@@ -24,9 +24,9 @@ function Conversation() {
         { from: 'user', to: 'agent', message: messageInput }
       ]);
     }
-    
+
   };
-  
+
   const handleKeyDown = (e) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
@@ -47,10 +47,11 @@ function Conversation() {
             </div>
           </li>
         ))}
+        <li style={{ marginTop: 'auto' }}></li>
       </ul>
     );
   };
- 
+
   const listItems = () => {
     for (let i = 0; i < items.length; i++) {
       renderItems.push(
@@ -61,6 +62,7 @@ function Conversation() {
             <div>{items[i]}</div>
           </div>
         </li>
+
       )
     }
     return renderItems;
@@ -94,23 +96,23 @@ function Conversation() {
         <div className='chat-window-topbar'>
           <div className='topbar-avatar ms-3'>KK</div>
           <div className='ms-3'>
-           Karthikeya
+            Karthikeya
           </div>
         </div>
         <div className='chat-window-body'>
           {selectedConvList()}
         </div>
         <div className='chat-window-input'>
-            <textarea
-              onKeyDown={handleKeyDown}
-              value={messageInput}
-              onChange={handleInputChange}
-              placeholder='Type your message...'
-            />
-          <button className='send-button btn btn-primary' onClick={handleSend}  style={{ height: 'fit-content' }}>
-              Send
-            </button>
-          </div>
+          <textarea
+            onKeyDown={handleKeyDown}
+            value={messageInput}
+            onChange={handleInputChange}
+            placeholder='Type your message...'
+          />
+          <button className='send-button btn btn-primary' onClick={handleSend} style={{ height: 'fit-content' }}>
+            Send
+          </button>
+        </div>
       </div>
       {/* <div className='conv-user-info'>
         
