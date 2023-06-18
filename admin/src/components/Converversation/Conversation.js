@@ -47,7 +47,7 @@ function Conversation() {
             </div>
           </li>
         ))}
-        <li style={{ marginTop: 'auto' }}></li>
+        {/* <li></li>  */}
       </ul>
     );
   };

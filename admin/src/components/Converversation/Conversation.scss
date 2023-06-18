@@ -174,12 +174,14 @@
     padding: 0;
     flex-direction: column;
     display: flex;
-    height: calc(100vh - 160px);
+    height: calc(100vh - 141px);
+    margin-bottom: 0px !important;
+
 
     li {
-      padding-top: 10px;
+      padding-bottom: 10px;
     }
-    
+  
   }
   
   .chat-bubble {
