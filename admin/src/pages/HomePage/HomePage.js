@@ -13,7 +13,7 @@ function HomePage() {
   };
 
   return (
-    <div className="d-flex">
+    <div className="d-flex" style={{ overflowX: 'auto'}}>
       <div className="sidebar vh-100 d-flex flex-column justify-content-between">
         <div>
           <div className="logo">Logo</div>
