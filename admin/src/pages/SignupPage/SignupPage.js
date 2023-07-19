@@ -55,7 +55,7 @@ function SignupPage() {
             theme: "light",
           })
           setTimeout(() => { 
-            navigate('/login');
+            navigate('/');
           }, 3000)
 
         }
@@ -140,7 +140,7 @@ function SignupPage() {
       </div>
       <div className="d-flex flex-row align-items-center justify-content-center mt-3">
                     <span>Have an account?</span>
-                    <button className="btn btn-link text-blue text-decoration-underline" onClick={() => navigate('/login')}>Login</button>
+                    <button className="btn btn-link text-blue text-decoration-underline" onClick={() => navigate('/')}>Login</button>
                 </div>
     </div>       
       <ToastContainer></ToastContainer>
