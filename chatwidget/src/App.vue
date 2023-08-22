@@ -1,72 +1,21 @@
 <template>
   <div class="c7d56e2f9a1">
     <div v-if="isOpen" class="chatwidget">
-      <div class="topbar"></div>
+      <div class="topbar">
+        <div></div>
+        <div class="tb-close">
+          <img src="./assets/cross.svg" alt="widget-close" />
+
+        </div>
+      </div>
       <div class="chat-window">
         <ul>
-          <li style="height: 10px"></li>
-          <li class="him">hi</li>
-          <li class="me">hello how are you?</li>
-          <li class="him">hi</li>
-          <li class="me">hello how are you?</li>
-          <li class="him">hi</li>
-          <li class="me">hello how are you?</li>
-          <li class="him">hi</li>
-          <li class="me">hello how are you?</li>
-          <li class="him">hi</li>
-          <li class="me">hello how are you?</li>
-          <li class="him">hi</li>
-          <li class="me">hello how are you?</li>
-          <li class="him">hi</li>
-          <li class="me">hello how are you?</li>
-          <li class="him">hi</li>
-          <li class="me">hello how are you?</li>
-          <li class="him">hi</li>
-          <li class="me">hello how are you?</li>
-          <li class="him">hi</li>
-          <li class="me">hello how are you?</li>
-          <li class="him">hi</li>
-          <li class="me">hello how are you?</li>
-          <li class="him">hi</li>
-          <li class="me">hello how are you?</li>
-          <li class="him">hi</li>
-          <li class="me">hello how are you?</li>
-          <li class="him">hi</li>
-          <li class="me">hello how are you?</li>
-          <li class="him">hi</li>
-          <li class="me">hello how are you?</li>
-          <li class="him">hi</li>
-          <li class="me">hello how are you?</li>
-          <li class="him">hi</li>
-          <li class="me">hello how are you?</li>
-          <li class="him">hi</li>
-          <li class="me">hello how are you?</li>
-          <li class="him">hi</li>
-          <li class="me">hello how are you?</li>
-          <li class="him">hi</li>
-          <li class="me">hello how are you?</li>
-          <li class="him">hi</li>
-          <li class="me">hello how are you?</li>
-          <li class="him">hi</li>
-          <li class="me">hello how are you?</li>
-          <li class="him">hi</li>
-          <li class="me">hello how are you?</li>
-          <li class="him">hi</li>
-          <li class="me">hello how are you?</li>
-          <li class="him">hi</li>
-          <li class="me">hello how are you?</li>
-          <li class="him">hi</li>
-          <li class="me">hello how are you?</li>
-          <li class="him">hi</li>
-          <li class="me">hello how are you?</li>
-          <li class="him">hi</li>
-          <li class="me">hello how are you?</li>
-          <li style="height: 10px"></li>
+          <li v-for="(chat, index) in chatList" :key="index" :class="chat.user">{{ chat.msg }}</li>
         </ul>
       </div>
       <div class="chat-input">
-        <input type="text" placeholder="Type a message" />
-        <button class="send-btn">send</button>
+        <input type="text" placeholder="Type a message" v-model="inputMessage" @keyup.enter="sendMessage"/>
+        <button class="send-btn" @click="sendMessage">send</button>
       </div>
     </div>
 
@@ -80,9 +29,19 @@
 export default {
   data() {
     return {
-      isOpen: false
+      isOpen: false,
+      chatList: [],
+      inputMessage: ""
     };
   },
+  methods: {
+    sendMessage() {
+      if (this.inputMessage.trim().length > 0) {
+        this.chatList.push({ msg: this.inputMessage, user: "me" })
+        this.inputMessage = ""
+      }
+    }
+  }
 };
 </script>
 
@@ -113,7 +72,7 @@ export default {
   height: 55px;
   width: 55px;
   border-radius: 50px;
-  background-color: #0028FF;
+  background-color: #1F6FEB;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -124,9 +83,19 @@ export default {
 .c7d56e2f9a1 .topbar {
   height: 52px;
   width: 100%;
-  background-color: #0028FF;
+  background-color: #1F6FEB;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.c7d56e2f9a1 .tb-close img {
+  height: 35px;
+  width: 33px;
+  margin-right: 6px;
 }
 
 .c7d56e2f9a1 .chat-window {
@@ -169,13 +138,14 @@ export default {
 .c7d56e2f9a1 ul .me {
   display: flex;
   justify-content: flex-end;
-  background: #0028FF;
+  background: #1F6FEB;
   color: #ffffff;
   padding: 10px 15px;
   margin-right: 15px;
   margin-left: auto;
   border-radius: 5px;
   width: fit-content;
+  margin-bottom: 10px;
 }
 
 .c7d56e2f9a1 ul .him {
@@ -186,12 +156,14 @@ export default {
   margin-left: 15px;
   width: fit-content;
   border-radius: 5px;
+  margin-bottom: 10px;
+
 }
 
 
 
 .c7d56e2f9a1 .send-btn {
-  background: #0028FF;
+  background: #1F6FEB;
   border: none;
   color: #ffffff;
   margin-right: 9px;
