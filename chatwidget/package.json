@@ -9,6 +9,9 @@
   },
   "dependencies": {
     "core-js": "^3.8.3",
+    "human-readable-ids": "^1.0.4",
+    "moment": "^2.29.4",
+    "socket.io-client": "^4.7.2",
     "vue": "^3.2.13"
   },
   "devDependencies": {

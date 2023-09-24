@@ -1,15 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect  } from 'react';
 import './Conversation.scss';
 import arrowdown from '../../assets/arrow-down-.svg';
+import io from 'socket.io-client';
 
 
 function Conversation() {
   let items = ['Item 1', 'Item 2', 'Item 3', 'Item 1', 'Item 2', 'Item 3', 'Item 1', 'Item 2', 'Item 3', 'Item 3', 'Item 1', 'Item 2', 'Item 3'];
   const renderItems = [];
 
+  const [socket, setSocket] = useState(null);
+
 
   const [messageInput, setMessageInput] = useState('');
   const [ConvList, setConvList] = useState([{ 'from': 'agent', 'to': 'user', 'message': 'Hello' }, { 'from': 'user', 'to': 'agent', 'message': 'Hi' }, { 'from': 'agent', 'to': 'user', 'message': 'How are you?' }])
+
+  useEffect(() => {
+    const socketInstance = io('http://localhost:5000');
+    
+    setSocket(socketInstance);
+
+    if (socketInstance) {
+      socketInstance.emit('join', "test"); 
+    }
+
+    return () => {
+      if (socketInstance) {
+        socketInstance.disconnect();
+      }
+    };
+  }, []);
 
   const handleInputChange = (e) => {
     setMessageInput(e.target.value);
