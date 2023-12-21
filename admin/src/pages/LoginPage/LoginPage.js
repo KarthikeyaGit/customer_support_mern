@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import './LoginPage.css'
 
 function LoginPage() {
     const navigate = useNavigate();
@@ -50,54 +50,56 @@ function LoginPage() {
     };
 
     return (
-        <div>
-            <div className="d-flex flex-column justify-content-center align-items-center vh-100 bg-light">
-                <h2 className="card-title text-center mb-4">Login</h2>
-                <div className="card" style={{ width: '100%', maxWidth: '500px' }}>
-                    <div className="card-body m-4">
-                        <form onSubmit={handleLogin}>
-                            <div className="form-group mb-4">
-                                <label className="mb-1">Email</label>
-                                <input
-                                    type="email"
-                                    className="form-control"
-                                    placeholder="Enter email"
-                                    id="email"
-                                    value={email}
-                                    onChange={(e) => setUsername(e.target.value)}
-                                    required
-                                />
-                                <div className="invalid-feedback">
-                                    Please provide a valid email.
-                                </div>
-                            </div>
-
-                            <div className="form-group mb-4">
-                                <label className="mb-1">Password</label>
-                                <input
-                                    type="password"
-                                    className="form-control"
-                                    placeholder="Password"
-                                    id="password"
-                                    value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
-                                    required
-                                />
-                                <div className="invalid-feedback">
-                                    Please provide a valid password.
-                                </div>
-                            </div>
-
-                            <button type="submit" className="btn btn-primary btn-block">
-                                Login
-                            </button>
-                        </form>
+        <div className="main">
+            <div className="card" id="login-card">
+                <div className="c-header">
+                    Log in
+                </div>
+                <form onSubmit={handleLogin}>
+                    <div className="card-form-group">
+                        <label>Email</label>
+                        <input type="email"
+                            className="form-control"
+                            placeholder="Logan@mail.com"
+                            id="email"
+                            value={email}
+                            onChange={(e) => setUsername(e.target.value)}
+                            required />
+                        <div className="invalid-feedback">
+                            Please provide a valid email.
+                        </div>
                     </div>
-                </div>
-                <div className="d-flex flex-row align-items-center justify-content-center mt-3">
-                    <span>Do you have an account?</span>
-                    <button className="btn btn-link text-blue text-decoration-underline" onClick={() => navigate('/signup')}>Sign Up</button>
-                </div>
+                    <div class="card-form-group">
+                        <label>Password</label>
+                        <input type="password"
+                            className="form-control"
+                            placeholder="Enter Password"
+                            id="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required />
+                        <div className="invalid-feedback">
+                            Please provide a valid password.
+                        </div>
+                    </div>
+                    <div className="checkbox-wrapper">
+                        <input id="example-1" className="substituted" type="checkbox" aria-hidden="true" />
+                        <label for="example-1">Remember Me</label>
+                    </div>
+                    <div className="card-footer">
+                        <button type="submit" className="btn-primary">Log in</button>
+                    </div>
+                    <div className="card-footer">
+                        <div className="btn-text pointer">Forgot Password?</div>
+                    </div>
+                    <div className="divider"></div>
+                    <div className="card-footer">
+                        <div className="btn-text-dark">Don’t have an account?</div>
+                    </div>
+                    <div className="card-footer">
+                        <div className="btn-text pointer" onClick={() => navigate('/signup')}>Sign up</div>
+                    </div>
+                </form>
             </div>
             <ToastContainer></ToastContainer>
         </div>

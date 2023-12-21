@@ -93,9 +93,9 @@ function Conversation() {
         <div className='conv-heading'>
           Conversation
         </div>
-        <div class="conv-button-container">
-          <button class="btn conv-btn-toggle ps-1 active">Open Chat</button>
-          <button class="btn conv-btn-toggle ps-5">Close</button>
+        <div className="conv-button-container">
+          <button className="btn conv-btn-toggle ps-1 active">Open Chat</button>
+          <button className="btn conv-btn-toggle ps-5">Close</button>
         </div>
         <div className="conv-search-container">
           <span className="conv-search-icon ms-2">&#128269;</span>
